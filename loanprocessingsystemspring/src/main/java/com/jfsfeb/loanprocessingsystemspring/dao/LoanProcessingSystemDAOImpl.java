@@ -27,7 +27,7 @@ public class LoanProcessingSystemDAOImpl implements LoanProcessingSystemDAO {
 	public EmployeeInfo adminLogin(EmployeeInfo employee) {
 		try {
 			manager = factory.createEntityManager();
-			String jpql = "select u from EmployeeInfo u where" + " emailId=:emailId and password=:password "
+			String jpql = "select e from EmployeeInfo e where" + " emailId=:emailId and password=:password "
 					+ "and role=:role";
 			TypedQuery<EmployeeInfo> query = manager.createQuery(jpql, EmployeeInfo.class);
 			query.setParameter("emailId", employee.getEmailId());

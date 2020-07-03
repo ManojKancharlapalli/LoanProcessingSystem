@@ -144,7 +144,7 @@ public class LoanProcessingSystemController {
 											} while (!flag);
 											do {
 												try {
-													log.info("Enter loan ammount :");
+													log.info("Enter loan Interest :");
 													loanInterest = scanner.nextDouble();
 													flag = true;
 												} catch (InputMismatchException e) {

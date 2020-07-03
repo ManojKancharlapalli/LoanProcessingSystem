@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.jfsfeb.loanprocessingsystemwithhibernate.dto.CustomerInfo;
@@ -25,7 +24,7 @@ public class LoanProcessingSystemDAOImpl implements LoanProcessingSystemDAO {
 		try {
 			factory = Persistence.createEntityManagerFactory("TestPersistence");
 			manager = factory.createEntityManager();
-			String jpql = "select u from EmployeeInfo u where" + " emailId=:emailId and password=:password "
+			String jpql = "select e from EmployeeInfo e where" + " emailId=:emailId and password=:password "
 					+ "and role=:role";
 			TypedQuery<EmployeeInfo> query = manager.createQuery(jpql, EmployeeInfo.class);
 			query.setParameter("emailId", employee.getEmailId());
@@ -48,17 +47,18 @@ public class LoanProcessingSystemDAOImpl implements LoanProcessingSystemDAO {
 		factory = Persistence.createEntityManagerFactory("TestPersistence");
 		manager = factory.createEntityManager();
 		String jpql = "select l from LoanInfo l";
-		TypedQuery<LoanInfo> query = manager.createQuery(jpql, LoanInfo.class);
+		TypedQuery<LoanInfo> query = manager.createQuery(jpql,LoanInfo.class);
 		try {
 			List<LoanInfo> recordList = query.getResultList();
 			return recordList;
-		} catch (Exception e) {
-			throw new LPSException("loans are not availble");
-		} finally {
+		}catch (Exception e) {
+			throw new LPSException("No loan programs are availble");
+		}finally {
 			manager.close();
 			factory.close();
 		}
 	}
+
 
 	@Override
 	public boolean updateLoan(int loanId, double loanInterest) {
@@ -129,7 +129,7 @@ public class LoanProcessingSystemDAOImpl implements LoanProcessingSystemDAO {
 	public List<StatusInfo> viewAllStatus() {
 		factory = Persistence.createEntityManagerFactory("TestPersistence");
 		manager = factory.createEntityManager();
-		String jpql = "select s from ApplicationStatusBean s";
+		String jpql = "select s from StatusInfo s";
 		TypedQuery<StatusInfo> query = manager.createQuery(jpql, StatusInfo.class);
 
 		try {

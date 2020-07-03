@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "lps_loans_info")
+@Table(name = "loanInfo")
 public class LoanInfo implements Serializable {
 	@Id
 	@Column

@@ -486,7 +486,7 @@ public class LoanProcessingSystemController {
 								break;
 
 							case 2:
-								log.info("Fill the details in form..");
+								log.info("Fill the details in form");
 								CustomerInfo formBean = new CustomerInfo();// modified
 								customerId = (int) (Math.random() * 1000);
 								log.info("Your Customer id: " + customerId);

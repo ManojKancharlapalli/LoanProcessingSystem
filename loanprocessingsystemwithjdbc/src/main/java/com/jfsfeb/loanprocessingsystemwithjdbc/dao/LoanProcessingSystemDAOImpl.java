@@ -103,9 +103,9 @@ public class LoanProcessingSystemDAOImpl implements LoanProcessingSystemDAO {
 
 			statement.setInt(1, loan.getLoanId());
 			statement.setString(2, loan.getLoanType());
-			statement.setDouble(3, loan.getLoanInterest());
+			statement.setDouble(3, loan.getLoanAmount());
 			statement.setInt(4, loan.getLoanPeriod());
-			statement.setDouble(5, loan.getLoanAmount());
+			statement.setDouble(5, loan.getLoanInterest());
 			int count = statement.executeUpdate();
 
 			return true;
